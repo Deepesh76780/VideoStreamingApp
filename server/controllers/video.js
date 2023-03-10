@@ -67,7 +67,7 @@ export const addView = async (req, res, next) => {
 };
 export const random = async (req, res, next) => {
   try {
-    const videos = await Video.aggregate([{ $sample: { size: 40 } }]);
+    const videos = await Video.aggregate([{ $sample: { size: 1 } }]);
     res.status(200).json(videos);
   } catch (err) {
     next(err);
@@ -85,6 +85,35 @@ export const trend = async (req, res, next) => {
 export const sub = async (req, res, next) => {
   try {
     const user = await User.findById(req.user.id);
+    const subscribedChannels = user.subscribedPeoples;
+
+    const list = await Promise.all(
+      subscribedChannels.map((channelId) => {
+        return Video.find({ userId: channelId });
+      })
+    );
+
+    res.status(200).json(list.flat().sort((a, b) => b.createdAt - a.createdAt));
+    // there is nested array so to remove that we use flat method
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const getByTag = async (req, res, next) => {
+  const tags = req.query.tags.split(",");
+  try {
+    const videos = await Video.find({ tags: { $in: tags } }).limit(20);
+    res.status(200).json(videos);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const Search = async (req, res, next) => {
+  try {
+    const videos = await Video.find({ tags: { $in: tags } }).limit(20);
+    res.status(200).json(videos);
   } catch (err) {
     next(err);
   }
