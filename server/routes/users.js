@@ -16,7 +16,7 @@ const router = Express.Router();
 // router.get("/test", test);
 router.put("/:id", verifyToken, update);
 router.delete("/:id", verifyToken, Delete);
-router.get("/find/:id",getUser);
+router.get("/find/:id", getUser);
 router.put("/sub/:id", verifyToken, subscribe);
 router.put("/unsub/:id", verifyToken, unSubscribe);
 router.put("/like/:videoId", verifyToken, like);
