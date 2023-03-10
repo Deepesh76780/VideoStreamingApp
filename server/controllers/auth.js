@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import { createError } from "../error.js";
-import { Jwt } from "jsonwebtoken";
+import Jwt from "jsonwebtoken";
 // import { createError } from "../error.js";
 // when ever you call mongodb your function should be async because that will
 // take time
@@ -30,6 +30,16 @@ export const signin = async (req, res, next) => {
     if (!isCorrect) {
       return next(createError(400, "wrong password"));
     }
+
+    const token = Jwt.sign({ id: user._id }, process.env.JWT);
+    const { password, ...others } = user._doc;
+
+    res
+      .cookie("access_token", token, {
+        httpOnly: true,
+      })
+      .status(200)
+      .json(others);
   } catch (error) {
     next(error);
   }
