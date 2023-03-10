@@ -16,15 +16,17 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-// import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
+import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
 import { Link } from "react-router-dom";
 
 
 const Container=styled.div`
 flex:1;
-background-color:#1A224B;
+background-color:${({theme})=> theme.bgLighter};
 height:100vh;
-color:white;
+color:${({theme})=> theme.text};
+position:sticky; 
+top:0;
 font-size:14px;
 `
 const Wrapper=styled.div`
@@ -63,7 +65,7 @@ const Item = styled.div`
 
 const Hr = styled.hr`
   margin: 16px 0px;
-  border: 0.1px border #aaaaaa;
+  border: 0.1px border #${({theme})=> theme.soft};
 ;
 `;
 
@@ -88,19 +90,21 @@ const Button = styled.button`
 const Title = styled.h2`
   font-size: 14px;
   font-weight: 500;
-  color: #eeeeee;
+  color: #${({theme})=> theme.soft};
   margin-bottom: 20px;
 `;
 
 
-const Menu = () => {
+const Menu = ({darkMode,setdarkMode}) => {
   return (
     <Container>
         <Wrapper>
+          <Link to="/" style={{textDecoration:"none",color:'inherit'}}>
             <Logo>
                 <Img src={logo}/>
                 CIPHERTUBE
             </Logo>
+          </Link>
             <Item>
               <HomeIcon/>
               Home
@@ -169,10 +173,10 @@ const Menu = () => {
           <HelpOutlineOutlinedIcon />
           Help
         </Item>
-        {/* <Item onClick={() => setDarkMode(!darkMode)}>
+        <Item onClick={() => setdarkMode(!darkMode)}>
           <SettingsBrightnessOutlinedIcon />
           {darkMode ? "Light" : "Dark"} Mode
-        </Item> */}
+        </Item>
         </Wrapper>
     </Container>
   )
