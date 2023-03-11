@@ -1,45 +1,47 @@
-import React from 'react'
-import styled from 'styled-components'
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined"
-import YoutubeSearchedForOutlinedIcon from '@mui/icons-material/YoutubeSearchedForOutlined';
-import { Link } from 'react-router-dom'
+import React from "react";
+import styled from "styled-components";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
+import YoutubeSearchedForOutlinedIcon from "@mui/icons-material/YoutubeSearchedForOutlined";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const Container=styled.div`
-  position:sticky;
-  top:0;
-  background-color:${({theme})=> theme.bgLighter};
-  height:56px
-
-`
-const Wrapper=styled.div`
-    display:flex;
-    align-items:center; 
-    justify-content:flex-end;
-    height:100%;
-    padding:0px 20px; 
-    position:relative;
-`
-const Input=styled.input`
-  border:none;
-  background:transparent;
-  outline:none;
-  color:${({theme})=> theme.soft};
-  font-size:14px
-`
-const Search=styled.div`
-  width:40%;
-  position:absolute;
-  left:0;
-  right:0;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:5px;
-  color:${({theme})=>theme.text};
-  border:1px solid #ccc;
-  border-radius:5px;
-`
+const Container = styled.div`
+  position: sticky;
+  top: 0;
+  color: ${({ theme }) => theme.text};
+  background-color: ${({ theme }) => theme.bgLighter};
+  height: 56px;
+`;
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  padding: 0px 20px;
+  position: relative;
+`;
+const Input = styled.input`
+  border: none;
+  background: transparent;
+  outline: none;
+  color: ${({ theme }) => theme.soft};
+  font-size: 14px;
+`;
+const Search = styled.div`
+  width: 40%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  color: ${({ theme }) => theme.text};
+  border: 1px solid #ccc;
+  border-radius: 5px;
+`;
 
 const Button = styled.button`
   padding: 5px 15px;
@@ -52,25 +54,53 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   gap: 5px;
+  color:{({theme})=> theme.text}
+`;
+
+const User = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  color:{({theme})=> theme.text}
+
+  `;
+
+const Avatar = styled.img`
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #999;
+  color:{({theme})=> theme.text}
 `;
 
 const Navbar = () => {
+  const { currentUser } = useSelector((state) => state.user);
+  // console.log(currentUser);
   return (
     <Container>
       <Wrapper>
         <Search>
-          <Input placeholder='Search'/>
-          <YoutubeSearchedForOutlinedIcon/>
+          <Input placeholder="Search" />
+          <YoutubeSearchedForOutlinedIcon />
         </Search>
-        <Link to="signin" style={{textDecoration:"none"}}>
-        <Button>
-        <AccountCircleOutlinedIcon />
-        SIGN IN
-        </Button>
-        </Link>
+        {currentUser ? (
+          <User>
+            <VideoCallOutlinedIcon />
+            <Avatar src={currentUser.img} />
+            {currentUser.name}
+          </User>
+        ) : (
+          <Link to="signin" style={{ textDecoration: "none" }}>
+            <Button>
+              <AccountCircleOutlinedIcon />
+              SIGN IN
+            </Button>
+          </Link>
+        )}
       </Wrapper>
     </Container>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

@@ -1,6 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { loginFailer, loginStart, loginSuccess } from "../redux/userSlice";
+import { auth, provider } from "../firebase";
+import { signInWithPopup } from "firebase/auth";
 
 const Container = styled.div`
   display: flex;
@@ -68,6 +73,41 @@ const Signin = () => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const dispatch = useDispatch();
+
+  const handlelogin = async (e) => {
+    e.preventDefault();
+    dispatch(loginStart());
+    try {
+      const res = await axios.post("/auth/signin", {
+        name,
+        password,
+      });
+      dispatch(loginSuccess(res.data));
+    } catch (err) {
+      dispatch(loginFailer(err));
+    }
+  };
+
+  const signInWithGoogle = async () => {
+    dispatch(loginStart());
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        axios
+          .post("/auth/google/", {
+            name: result.user.displayName,
+            email: result.user.email,
+            img: result.user.photoURL,
+          })
+          .then((res) => {
+            dispatch(loginSuccess(res.data));
+          });
+      })
+      .catch((error) => {
+        dispatch(loginFailer());
+      });
+  };
+
   return (
     <Container>
       <Wrapper>
@@ -82,7 +122,9 @@ const Signin = () => {
           placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button>Sign in</Button>
+        <Button onClick={handlelogin}>Sign in</Button>
+        <Title>or</Title>
+        <Button onClick={signInWithGoogle}>Signin with Google</Button>
         <Title>or</Title>
         <Input placeholder="username" />
         <Input placeholder="email" onChange={(e) => setEmail(e.target.value)} />
