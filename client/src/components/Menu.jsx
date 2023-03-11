@@ -1,7 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
-import logo from "../assets/Logo.svg"
-import HomeIcon from '@mui/icons-material/Home';
+import React from "react";
+import styled from "styled-components";
+import logo from "../assets/Logo.svg";
+import HomeIcon from "@mui/icons-material/Home";
 import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
 import SubscriptionsOutlinedIcon from "@mui/icons-material/SubscriptionsOutlined";
 import VideoLibraryOutlinedIcon from "@mui/icons-material/VideoLibraryOutlined";
@@ -19,58 +19,59 @@ import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
 import { Link } from "react-router-dom";
 
-
-const Container=styled.div`
-flex:1;
-background-color:${({theme})=> theme.bgLighter};
-height:100vh;
-color:${({theme})=> theme.text};
-position:sticky; 
-top:0;
-font-size:14px;
-`
-const Wrapper=styled.div`
-padding:18px 26px;
-`
-const Logo=styled.div`
-display:flex;
-align-items:center;
-gap:5px;
-font-size:18px;
-font-weight:bold;
-margin-bottom:25px;
-background: linear-gradient(93.07deg, #F52AF5 4.14%, #DD37F5 31.35%, #219BF2 73.51%, #00ADF2 95.21%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-text-fill-color: transparent;
-`
-const Img=styled.img`
-height:25px;
-`
+const Container = styled.div`
+  flex: 1;
+  background-color: ${({ theme }) => theme.bgLighter};
+  height: 100vh;
+  color: ${({ theme }) => theme.text};
+  position: sticky;
+  top: 0;
+  font-size: 14px;
+`;
+const Wrapper = styled.div`
+  padding: 18px 26px;
+`;
+const Logo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  background: linear-gradient(
+    93.07deg,
+    #f52af5 4.14%,
+    #dd37f5 31.35%,
+    #219bf2 73.51%,
+    #00adf2 95.21%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+`;
+const Img = styled.img`
+  height: 25px;
+`;
 const Item = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
   cursor: pointer;
   padding: 7.5px 0px;
-
+  color: ${({ theme }) => theme.text};
   &:hover {
-    background-color:${({theme})=> theme.hover};
-    border-radius:5px;
-  };
-  
+    background-color: ${({ theme }) => theme.hover};
+    border-radius: 5px;
+  }
 `;
 
 const Hr = styled.hr`
   margin: 16px 0px;
-  border: 0.1px border #${({theme})=> theme.soft};
-;
+  border: 0.1px border #${({ theme }) => theme.soft}; ;
 `;
 
-const Login = styled.div`
-
-`;
+const Login = styled.div``;
 
 const Button = styled.button`
   padding: 5px 15px;
@@ -89,33 +90,48 @@ const Button = styled.button`
 const Title = styled.h2`
   font-size: 14px;
   font-weight: 500;
-  color: #${({theme})=> theme.soft};
+  color: #${({ theme }) => theme.soft};
   margin-bottom: 20px;
 `;
 
-
-const Menu = ({darkMode,setdarkMode}) => {
+const Menu = ({ darkMode, setdarkMode }) => {
   return (
     <Container>
-        <Wrapper>
-          <Link to="/" style={{textDecoration:"none",color:'inherit'}}>
-            <Logo>
-                <Img src={logo}/>
-                CIPHERTUBE
-            </Logo>
-          </Link>
-            <Item>
-              <HomeIcon/>
-              Home
-            </Item>
-            <Item>
-          <ExploreOutlinedIcon />
-          Explore
-        </Item>
+      <Wrapper>
+        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+          <Logo>
+            <Img src={logo} />
+            CIPHERTUBE
+          </Logo>
+        </Link>
         <Item>
-          <SubscriptionsOutlinedIcon />
-          Subscriptions
+          <HomeIcon />
+          Home
         </Item>
+        <Link
+          to="trend"
+          style={{
+            textDecoration: "none",
+            color: "inherit",
+          }}
+        >
+          <Item>
+            <ExploreOutlinedIcon />
+            Explore
+          </Item>
+        </Link>
+        <Link
+          to="subscriptions"
+          style={{
+            textDecoration: "none",
+            color: "inherit",
+          }}
+        >
+          <Item>
+            <SubscriptionsOutlinedIcon />
+            Subscriptions
+          </Item>
+        </Link>
         <Hr />
         <Item>
           <VideoLibraryOutlinedIcon />
@@ -128,7 +144,7 @@ const Menu = ({darkMode,setdarkMode}) => {
         <Hr />
         <Login>
           Sign in to like videos, comment, and subscribe.
-          <Link to="signin" style={{textDecoration:"none"}}>
+          <Link to="signin" style={{ textDecoration: "none" }}>
             <Button>
               <AccountCircleOutlinedIcon />
               SIGN IN
@@ -178,9 +194,9 @@ const Menu = ({darkMode,setdarkMode}) => {
           <SettingsBrightnessOutlinedIcon />
           {darkMode ? "Light" : "Dark"} Mode
         </Item>
-        </Wrapper>
+      </Wrapper>
     </Container>
-  )
-}
+  );
+};
 
-export default Menu
+export default Menu;
