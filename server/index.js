@@ -43,5 +43,3 @@ app.listen(8801, () => {
   connect();
   console.log("connected!");
 });
-
-// https://youtu.be/CCF-xV3RSSs?t=5945
