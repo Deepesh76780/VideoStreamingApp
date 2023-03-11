@@ -56,9 +56,8 @@ const Item = styled.div`
   padding: 7.5px 0px;
 
   &:hover {
-    background: #27336F;
-    border-radius:16px;
-    padding-left:5px
+    background-color:${({theme})=> theme.hover};
+    border-radius:5px;
   };
   
 `;
@@ -129,10 +128,12 @@ const Menu = ({darkMode,setdarkMode}) => {
         <Hr />
         <Login>
           Sign in to like videos, comment, and subscribe.
+          <Link to="signin" style={{textDecoration:"none"}}>
             <Button>
               <AccountCircleOutlinedIcon />
               SIGN IN
             </Button>
+          </Link>
         </Login>
         <Hr />
         <Title>BEST OF LAMATUBE</Title>
