@@ -1,46 +1,53 @@
-import React from 'react'
-import styled from 'styled-components'
-import Comment from './Comment'
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import Comment from "./Comment";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
-const Container=styled.div`
-    
-`
-const NewComment =styled.div`
-    display:flex;
-    align-items:center;
-    gap:10px;
-`
+const Container = styled.div``;
+const NewComment = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
 
-const Avatar =styled.img`
+const Avatar = styled.img`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-`
-const Input =styled.input`
-    border:none;
-    border-bottom:1px solid ${({theme})=> theme.soft};
-    background-color:transparent;
-    outline:none;
-    padding:5px;
-    width:100%;
-`
+`;
+const Input = styled.input`
+  border: none;
+  border-bottom: 1px solid ${({ theme }) => theme.soft};
+  background-color: transparent;
+  outline: none;
+  padding: 5px;
+  width: 100%;
+`;
 
-const Comments = () => {
+const Comments = ({ videoId }) => {
+  const { currentUser } = useSelector((state) => state.user);
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    const fetchComments = async () => {
+      const res = await axios.get(`/comments/${videoId}`);
+      setComments(res.data);
+    };
+    fetchComments();
+  }, [videoId]);
+
   return (
     <Container>
       <NewComment>
-        <Avatar src="https://yt3.ggpht.com/yti/APfAmoE-Q0ZLJ4vk3vqmV4Kwp0sbrjxLyB8Q4ZgNsiRH=s88-c-k-c0x00ffffff-no-rj-mo"/>
-        <Input placeholder='Add comment here..'/>
-     </NewComment>
-     <Comment/>
-     <Comment/>
-     <Comment/>
-     <Comment/>
-     <Comment/>
-     <Comment/>
-     <Comment/>
+        <Avatar src={currentUser.img} />
+        <Input placeholder="Add comment here.." />
+      </NewComment>
+      {comments.map((comment) => (
+        <Comment key={comment._id} comment={comment} />
+      ))}
     </Container>
-  )
-}
+  );
+};
 
-export default Comments
+export default Comments;

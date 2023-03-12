@@ -49,6 +49,7 @@ export const deleteVideo = async (req, res, next) => {
 };
 export const getVideo = async (req, res, next) => {
   try {
+    // console.log("yes");
     const video = await Video.findById(req.params.id);
     res.status(200).json(video);
   } catch (err) {
