@@ -1,24 +1,16 @@
 import Express from "express";
 import mongoose from "mongoose";
-// const dotenv = require("dotenv");
 import dotenv from "dotenv";
 import userRoutes from "./routes/users.js";
 import commentRoutes from "./routes/comments.js";
 import videoRoutes from "./routes/videos.js";
 import authRoutes from "./routes/auth.js";
 import cookieParser from "cookie-parser";
-import path from "path";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
+dotenv.config();
 const app = Express();
 
-dotenv.config();
-
 const connect = () => {
+  // console.log("yes");
   mongoose
     .connect(process.env.MONGO)
     .then(() => {
@@ -45,13 +37,7 @@ app.use((err, req, res, next) => {
     .json({ success: false, status: status, message: message });
 });
 
-app.use(Express.static(path.join(__dirname, "./client/build")));
-app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
-const port = process.env.PORT || 8081;
-
-app.listen(port, () => {
+app.listen(8801, () => {
   connect();
   console.log("connected!");
 });

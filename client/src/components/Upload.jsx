@@ -83,6 +83,8 @@ const Upload = ({ setOpen }) => {
   const [video, setVideo] = useState(undefined);
   const [videoPer, setVideoPer] = useState(0);
   const [imgPer, setImgPer] = useState(0);
+  //   const [title, setTitle] = useState("");
+  //   const [desc, setDesc] = useState("");
   const [inputs, setInputs] = useState({});
   const [tags, setTags] = useState([]);
   const Navigate = useNavigate();
@@ -93,9 +95,6 @@ const Upload = ({ setOpen }) => {
     });
   };
 
-  const handleTags = (e) => {
-    setTags(e.target.value.split(","));
-  };
   const uploadFile = (file, urlType) => {
     const storage = getStorage(app);
     const fileName = new Date().getTime() + file.name;
@@ -124,8 +123,7 @@ const Upload = ({ setOpen }) => {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setInputs((prev) => {
-            console.log(downloadURL);
-            return { ...prev, [urlType]: downloadURL };
+            return { ...prev, urlType: downloadURL };
           });
         });
       }
@@ -140,10 +138,7 @@ const Upload = ({ setOpen }) => {
 
   const handleUpload = async (e) => {
     e.preventDefault();
-    const res = await axios.post("http://localhost:8081/videos", {
-      ...inputs,
-      tags,
-    });
+    const res = await axios.post("/videos", { ...inputs, tags });
     setOpen(false);
     res.status === 200 && Navigate(`/video/${res.data._id}`);
   };
@@ -185,7 +180,7 @@ const Upload = ({ setOpen }) => {
           type="text"
           name="tags"
           placeholder="separate tags by commas"
-          onChange={handleTags}
+          onChange={(e) => setTags(e.target.value.split(","))}
         />
         <Label>Image:</Label>
         {imgPer > 0 ? (

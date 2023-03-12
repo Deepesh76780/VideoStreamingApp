@@ -3,8 +3,8 @@ import User from "../models/User.js";
 import Video from "../models/Video.js";
 
 export const addVideo = async (req, res, next) => {
-  // console.log("yes");
   const newVideo = new Video({ userId: req.user.id, ...req.body });
+
   try {
     const savedVideo = await newVideo.save();
     res.status(200).json(savedVideo);
