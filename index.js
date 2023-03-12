@@ -45,9 +45,9 @@ app.use((err, req, res, next) => {
     .json({ success: false, status: status, message: message });
 });
 
-app.use(Express.static(path.join(__dirname, "../client/build")));
+app.use(Express.static(path.join(__dirname, "./client/build")));
 app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 const port = process.env.PORT || 8081;
 
