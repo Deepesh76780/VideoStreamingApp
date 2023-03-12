@@ -23,7 +23,6 @@ router.put("/view/:id", verifyToken, addView);
 router.get("/trend", trend);
 router.get("/random", random);
 router.get("/sub", verifyToken, sub);
-// router.get("/unsub", verifyToken, sub);
 router.get("/tags", getByTag);
 router.get("/search", Search);
 

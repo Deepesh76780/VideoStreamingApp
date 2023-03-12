@@ -7,6 +7,12 @@ import commentRoutes from "./routes/comments.js";
 import videoRoutes from "./routes/videos.js";
 import authRoutes from "./routes/auth.js";
 import cookieParser from "cookie-parser";
+import path from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = Express();
 
@@ -39,7 +45,13 @@ app.use((err, req, res, next) => {
     .json({ success: false, status: status, message: message });
 });
 
-app.listen(8801, () => {
+app.use(Express.static(path.join(__dirname, "../client/build")));
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
+const port = process.env.PORT || 8081;
+
+app.listen(port, () => {
   connect();
   console.log("connected!");
 });
