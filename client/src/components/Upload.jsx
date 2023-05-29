@@ -83,8 +83,6 @@ const Upload = ({ setOpen }) => {
   const [video, setVideo] = useState(undefined);
   const [videoPer, setVideoPer] = useState(0);
   const [imgPer, setImgPer] = useState(0);
-  //   const [title, setTitle] = useState("");
-  //   const [desc, setDesc] = useState("");
   const [inputs, setInputs] = useState({});
   const [tags, setTags] = useState([]);
   const Navigate = useNavigate();
@@ -95,6 +93,9 @@ const Upload = ({ setOpen }) => {
     });
   };
 
+  const handleTags = (e) => {
+    setTags(e.target.value.split(","));
+  };
   const uploadFile = (file, urlType) => {
     const storage = getStorage(app);
     const fileName = new Date().getTime() + file.name;
@@ -117,13 +118,16 @@ const Upload = ({ setOpen }) => {
           case "running":
             console.log("Upload is running");
             break;
+          default:
+            console.log("something wnet wrong");
         }
       },
       (error) => {},
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setInputs((prev) => {
-            return { ...prev, urlType: downloadURL };
+            console.log(downloadURL);
+            return { ...prev, [urlType]: downloadURL };
           });
         });
       }
@@ -131,16 +135,20 @@ const Upload = ({ setOpen }) => {
   };
   useEffect(() => {
     video && uploadFile(video, "videoUrl");
-  }, [img]);
+  }, [video]);
   useEffect(() => {
     img && uploadFile(img, "VideoImg");
-  }, [video]);
+  }, [img]);
 
   const handleUpload = async (e) => {
     e.preventDefault();
-    const res = await axios.post("/videos", { ...inputs, tags });
+    console.log("yez");
+    const res = await axios.post("http://localhost:8801/api/videos", {
+      ...inputs,
+      tags,
+    });
     setOpen(false);
-    res.status === 200 && Navigate(`/video/${res.data._id}`);
+    Navigate(`/video/${res.data._id}`);
   };
 
   return (
@@ -180,7 +188,7 @@ const Upload = ({ setOpen }) => {
           type="text"
           name="tags"
           placeholder="separate tags by commas"
-          onChange={(e) => setTags(e.target.value.split(","))}
+          onChange={handleTags}
         />
         <Label>Image:</Label>
         {imgPer > 0 ? (

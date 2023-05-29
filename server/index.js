@@ -1,16 +1,18 @@
 import Express from "express";
 import mongoose from "mongoose";
+// const dotenv = require("dotenv");
 import dotenv from "dotenv";
 import userRoutes from "./routes/users.js";
 import commentRoutes from "./routes/comments.js";
 import videoRoutes from "./routes/videos.js";
 import authRoutes from "./routes/auth.js";
 import cookieParser from "cookie-parser";
+import cors from "cors";
+
 dotenv.config();
 const app = Express();
 
 const connect = () => {
-  // console.log("yes");
   mongoose
     .connect(process.env.MONGO)
     .then(() => {
@@ -36,8 +38,9 @@ app.use((err, req, res, next) => {
     .status(status)
     .json({ success: false, status: status, message: message });
 });
-
+app.use(cors());
 app.listen(8801, () => {
+  // console.log("yes");
   connect();
   console.log("connected!");
 });

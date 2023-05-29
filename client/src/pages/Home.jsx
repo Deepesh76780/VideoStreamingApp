@@ -22,9 +22,9 @@ const Home = ({ type }) => {
 
   return (
     <Container>
-      {videos.map((video) => (
-        <Card key={video._id} video={video} />
-      ))}
+      {videos.map((video, index) => {
+        <Card key={index} video={video} />;
+      })}
     </Container>
   );
 };

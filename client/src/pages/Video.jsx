@@ -197,7 +197,7 @@ const Video = () => {
             <ChannelDetail>
               <ChannelName>{channel.name}</ChannelName>
               <ChannelCounter>{channel.subscribers} subscribers</ChannelCounter>
-              <Description>{currentVideo.desc}</Description>
+              {/* <Description>{currentVideo.desc}</Description> */}
             </ChannelDetail>
           </ChannelInfo>
           <Subscribe onClick={handleSub}>

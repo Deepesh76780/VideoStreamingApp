@@ -47,7 +47,7 @@ const Comment = ({ comment }) => {
       setChannel(channelRes.data);
     };
     fetchComment();
-  }, []);
+  }, [comment.userId]);
 
   return (
     <Container>
