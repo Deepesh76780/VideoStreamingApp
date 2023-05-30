@@ -5,7 +5,8 @@ This is a video streaming application built with React as the frontend, Node.js 
 | Upload videos | video Uploaded |
 | ------- | ------- |
 | ![Image 1](https://github.com/Deepesh76780/VideoStreamingApp/assets/99245631/8dee7996-719d-4243-80fc-a30eab37c0e1) | ![image](https://github.com/Deepesh76780/VideoStreamingApp/assets/99245631/3ced9734-8730-4d4e-a1e8-cf0a34cb7d45)|
-| Video Streaming | Signin |
+
+| Video Streaming | SignIn/SignUp |
 | ------- | ------- |
 | ![image](https://github.com/Deepesh76780/VideoStreamingApp/assets/99245631/7867d7a6-cd5f-4d64-a3ab-1f7393f2a3b8)| ![image](https://github.com/Deepesh76780/VideoStreamingApp/assets/99245631/e9e60ab6-9a0d-4d8a-9b69-bb2a942a6fb5) |
 
