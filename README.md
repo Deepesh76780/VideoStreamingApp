@@ -4,11 +4,12 @@ This is a video streaming application built with React as the frontend, Node.js 
 
 | Upload videos | video Uploaded |
 | ------- | ------- |
-| ![Image 1](https://github.com/Deepesh76780/VideoStreamingApp/assets/99245631/8dee7996-719d-4243-80fc-a30eab37c0e1) | ![image](https://github.com/Deepesh76780/VideoStreamingApp/assets/99245631/3ced9734-8730-4d4e-a1e8-cf0a34cb7d45)|
+| ![Screenshot from 2023-05-29 17-23-23](https://github.com/Deepesh76780/VideoStreamingApp/assets/99245631/f3a072be-dfdd-47eb-844e-586aa29fe851) | ![Screenshot from 2023-05-29 17-46-34](https://github.com/Deepesh76780/VideoStreamingApp/assets/99245631/de193d7b-4245-465b-97d5-3e3aac24eeb1)
 
 | Video Streaming | SignIn/SignUp |
 | ------- | ------- |
-| ![image](https://github.com/Deepesh76780/VideoStreamingApp/assets/99245631/7867d7a6-cd5f-4d64-a3ab-1f7393f2a3b8)| ![image](https://github.com/Deepesh76780/VideoStreamingApp/assets/99245631/e9e60ab6-9a0d-4d8a-9b69-bb2a942a6fb5) |
+| ![Screenshot from 2023-05-29 17-50-19](https://github.com/Deepesh76780/VideoStreamingApp/assets/99245631/7ba20b84-84a3-490a-bc4d-747d2fd3a561) | ![Screenshot from 2023-05-29 17-53-56](https://github.com/Deepesh76780/VideoStreamingApp/assets/99245631/42bfcd00-7d6e-472d-abfa-900ae43e022c)
+
 
 ## Features
 
