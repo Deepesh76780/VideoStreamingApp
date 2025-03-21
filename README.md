@@ -8,17 +8,17 @@
 VideoStreamingApp is a sophisticated video streaming application designed to provide users with an intuitive platform for uploading, streaming, and managing videos. The architecture consists of a React frontend communicating with a Node.js backend, while Firebase handles user authentication and video storage.
 
 ### Architecture and Main Components
-- **Frontend:** Developed using React, it provides a dynamic user interface that leverages Redux for state management.
-- **Backend:** Implemented in Node.js, it serves as the API provider for the frontend and manages interactions with the database.
+- **Frontend:** Developed using React, it provides a dynamic user interface that leverages Redux for state management and Material UI for responsive design.
+- **Backend:** Implemented in Node.js, it serves as the API provider for the frontend and manages interactions with the MongoDB database.
 - **Database:** MongoDB is utilized to store user data and video information securely.
 - **Authentication & Storage:** Firebase is leveraged for user authentication and storing videos.
 
 ## 🌟 Features
-- User-friendly interface for seamless video uploads and streaming
-- Authentication via Firebase ensuring secure access
-- Ability to comment on videos in real-time
-- Responsive design using Material UI components
-- Recommendation system based on user activity
+- User-friendly interface for seamless video uploads and streaming.
+- Authentication via Firebase ensuring secure access on signup and login.
+- Ability to comment on videos in real-time.
+- Responsive design using Material UI components, enhancing usability across devices.
+- Recommendation system based on user activity.
 
 ## Core Sections
 
@@ -102,7 +102,6 @@ For efficient development, ensure you have Nodemon installed globally:
 ```bash
 npm install -g nodemon
 ```
-
 Use this command to run the server during development for auto-reloading on changes.
 
 ### Deployment Instructions
@@ -131,5 +130,5 @@ This project does not currently have an assigned license.
   
 **Improvements:**
 - Optimized API endpoints for improved performance.
-  
-Last updated: 2025-03-21T09:44:35.464Z  
+
+Last updated: 2025-03-21T09:51:22.615Z
