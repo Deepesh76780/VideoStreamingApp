@@ -1,4 +1,4 @@
-# 📦 VideoStreamingAppsss kjnbkjbjkbkjb
+# 📦 VideoStreamingApp
 
 ![React](https://img.shields.io/badge/React-18.2.0-blue?style=flat-square&logo=react)
 ![Node.js](https://img.shields.io/badge/Node.js-v14.x-green?style=flat-square&logo=nodedotjs)
@@ -121,5 +121,15 @@ To deploy this application, consider using platforms like Heroku or Vercel for h
 
 This project does not currently have an assigned license.
 
-Version: 1  
-Last updated: 2025-03-21T05:49:49.772Z
+## Release Notes
+
+**Version:** 1  
+**Release Date:** March 21, 2025  
+
+**New Features:**
+- Enhanced UI components for better responsiveness.
+  
+**Improvements:**
+- Optimized API endpoints for improved performance.
+  
+Last updated: 2025-03-21T09:44:35.464Z  
