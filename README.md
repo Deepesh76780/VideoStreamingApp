@@ -82,16 +82,22 @@ After starting both servers, navigate to `http://localhost:3000` in your web bro
   📁 client/
     📄 package.json       
     📁 public/
+      📄 favicon.ico       
       📄 index.html       
+      📄 logo192.png      
+      🖼️ logo512.png      
+      📄 manifest.json     
+      🕵️ robots.txt        
     📁 src/
-      📄 App.js          
-      …
+      📄 App.css          
+      📄 App.js           
+      …                   
   📁 server/
     📁 controllers/
-      📄 auth.js        
-      …
+      📄 auth.js         
+      ...                
     🎭 routes/
-      📄 videos.js      
+      📄 auth.js         
 ```
 
 ## Development and Deployment
@@ -131,4 +137,4 @@ This project does not currently have an assigned license.
 **Improvements:**
 - Optimized API endpoints for improved performance.
 
-Last updated: 2025-03-21T09:51:22.615Z
+Last updated: 2025-03-21T09:51:50.291Z
